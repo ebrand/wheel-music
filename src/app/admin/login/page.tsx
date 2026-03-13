@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useStytchSession, StytchLogin } from "@stytch/nextjs";
-import { Products } from "@stytch/vanilla-js";
+import { useStytchSession, StytchLogin, Products } from "@stytch/nextjs";
 import { Container } from "@/components/ui/Container";
 
 export default function AdminLoginPage() {
