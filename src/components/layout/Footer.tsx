@@ -18,9 +18,12 @@ export function Footer() {
               Shows
             </Link>
           </div>
-          <p className="text-xs text-muted">
-            &copy; {new Date().getFullYear()} Wheel. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4 text-xs text-muted">
+            <p>&copy; {new Date().getFullYear()} Wheel. All rights reserved.</p>
+            <Link href="/admin/login" className="hover:text-foreground">
+              Admin
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>
