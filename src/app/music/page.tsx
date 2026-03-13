@@ -27,7 +27,7 @@ export default function MusicPage() {
                 <iframe
                   src={embed.src}
                   width="100%"
-                  height={embed.type === "spotify" ? 352 : 450}
+                  height="450"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
                   className="border-0"
