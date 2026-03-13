@@ -54,31 +54,17 @@ export function SubscribeForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="firstName" className="mb-1 block text-sm font-medium">
-            First Name
-          </label>
-          <Input id="firstName" name="firstName" placeholder="First name" />
-        </div>
-        <div>
-          <label htmlFor="lastName" className="mb-1 block text-sm font-medium">
-            Last Name
-          </label>
-          <Input id="lastName" name="lastName" placeholder="Last name" />
-        </div>
+        <Input id="firstName" name="firstName" placeholder="First name" aria-label="First name" />
+        <Input id="lastName" name="lastName" placeholder="Last name" aria-label="Last name" />
       </div>
-      <div>
-        <label htmlFor="subscribe-email" className="mb-1 block text-sm font-medium">
-          Email
-        </label>
-        <Input
-          id="subscribe-email"
-          name="email"
-          type="email"
-          required
-          placeholder="you@example.com"
-        />
-      </div>
+      <Input
+        id="subscribe-email"
+        name="email"
+        type="email"
+        required
+        placeholder="you@example.com"
+        aria-label="Email"
+      />
       {status === "error" && (
         <p className="text-sm text-red-400">{errorMessage}</p>
       )}
