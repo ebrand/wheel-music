@@ -5,7 +5,7 @@ export const metadata = { title: "Music | Wheel" };
 const embeds = [
   {
     title: "Apple Music",
-    src: "https://embed.music.apple.com/us/artist/85070887ade37e3577aaca0a10be38df",
+    src: "https://embed.music.apple.com/us/artist/wheel/1518252109",
     type: "apple" as const,
   },
 ];
