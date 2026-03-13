@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Wheel | Austin Pop Band",
   description:
-    "Wheel is a three-piece pop band from Austin, TX. Check out our music, upcoming shows, and more.",
+    "Tenacious power pop from Austin, Texas.",
 };
 
 export default function RootLayout({
