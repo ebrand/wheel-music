@@ -24,8 +24,8 @@ export default function AuthenticatePage() {
     const token = params.get("token");
     const type = params.get("stytch_token_type");
 
-    if (token && type === "magic_links") {
-      stytch.magicLinks
+    if (token && type === "oauth") {
+      stytch.oauth
         .authenticate(token, {
           session_duration_minutes: 60 * 24,
         })

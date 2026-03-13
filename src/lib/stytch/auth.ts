@@ -1,11 +1,7 @@
 import { cookies } from "next/headers";
 import { getStytchClient } from "./server";
 
-const ADMIN_EMAILS = [
-  "eric.d.brand@gmail.com",
-  "mccarthy.kevin66@gmail.com",
-  "hobratschk@gmail.com"
-];
+const ADMIN_ROLE = "website_admin";
 
 export async function validateAdminSession(): Promise<{
   authenticated: boolean;
@@ -20,14 +16,13 @@ export async function validateAdminSession(): Promise<{
     }
 
     const stytch = getStytchClient();
-    const { session } = await stytch.sessions.authenticate({
+    const { user } = await stytch.sessions.authenticate({
       session_token: sessionToken,
     });
 
-    const email =
-      session.authentication_factors?.[0]?.email_factor?.email_address;
+    const email = user.emails?.[0]?.email;
 
-    if (!email || !ADMIN_EMAILS.includes(email.toLowerCase())) {
+    if (!user.roles?.includes(ADMIN_ROLE)) {
       return { authenticated: false };
     }
 

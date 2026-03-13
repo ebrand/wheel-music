@@ -23,8 +23,9 @@ export default function AdminLoginPage() {
         <h1 className="mb-8 text-center text-2xl font-bold">Admin Login</h1>
         <StytchLogin
           config={{
-            products: [Products.emailMagicLinks],
-            emailMagicLinksOptions: {
+            products: [Products.oauth],
+            oauthOptions: {
+              providers: [{ type: "google" }],
               loginRedirectURL: `${siteUrl}/admin/authenticate`,
               signupRedirectURL: `${siteUrl}/admin/authenticate`,
             },
