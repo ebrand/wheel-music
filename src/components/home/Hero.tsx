@@ -7,7 +7,7 @@ export function Hero({ tagline }: { tagline?: string }) {
       <Container className="text-center">
         <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">WHEEL</h1>
         <p className="mx-auto mt-4 max-w-lg text-lg text-muted">
-          {tagline || "A three-piece pop band from Austin, TX"}
+          {tagline || "Tenacious power pop from Austin, Texas."}
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link
