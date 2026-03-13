@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resend } from "@/lib/resend";
+import { getResend } from "@/lib/resend";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     const fromEmail = process.env.RESEND_FROM_EMAIL || "hello@wheel-music.com";
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: fromEmail,
       to: fromEmail,
       replyTo: email,

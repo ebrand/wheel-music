@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resend } from "@/lib/resend";
+import { getResend } from "@/lib/resend";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await resend.contacts.create({
+    await getResend().contacts.create({
       email,
       firstName: firstName || undefined,
       lastName: lastName || undefined,
