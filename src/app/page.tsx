@@ -2,6 +2,7 @@ import { createPublicServerClient } from "@/lib/supabase/server";
 import { Show, BandInfo } from "@/types/database";
 import { Hero } from "@/components/home/Hero";
 import { UpcomingShows } from "@/components/home/UpcomingShows";
+import { HomeSubscribe } from "@/components/home/HomeSubscribe";
 
 export default async function HomePage() {
   const supabase = await createPublicServerClient();
@@ -26,6 +27,7 @@ export default async function HomePage() {
     <>
       <Hero tagline={tagline} />
       <UpcomingShows shows={shows} />
+      <HomeSubscribe />
     </>
   );
 }
