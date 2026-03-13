@@ -27,7 +27,7 @@ export default function AuthenticatePage() {
     if (token && type === "oauth") {
       stytch.oauth
         .authenticate(token, {
-          session_duration_minutes: 60 * 24,
+          session_duration_minutes: 60,
         })
         .then(() => {
           router.replace("/admin");
