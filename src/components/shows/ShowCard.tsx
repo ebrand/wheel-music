@@ -38,10 +38,10 @@ export function ShowCard({ show }: { show: Show }) {
           rel="noopener noreferrer"
         >
           <img
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=${show.venue_lat},${show.venue_lng}&zoom=15&size=200x200&markers=${show.venue_lat},${show.venue_lng}&key=${mapKey}`}
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=${show.venue_lat},${show.venue_lng}&zoom=15&size=100x100&scale=2&markers=size:small|${show.venue_lat},${show.venue_lng}&key=${mapKey}`}
             alt={`Map of ${show.venue}`}
-            width={200}
-            height={200}
+            width={100}
+            height={100}
             className="shrink-0 rounded-md"
           />
         </a>
