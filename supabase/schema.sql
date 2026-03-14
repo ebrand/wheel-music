@@ -7,6 +7,8 @@ create table if not exists shows (
   state text not null,
   ticket_url text,
   description text,
+  venue_lat double precision,
+  venue_lng double precision,
   is_published boolean default true,
   created_at timestamptz default now(),
   updated_at timestamptz default now()

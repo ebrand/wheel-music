@@ -23,6 +23,9 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    const latStr = data.get("venue_lat") as string;
+    const lngStr = data.get("venue_lng") as string;
+
     const payload = {
       id: show?.id,
       date: data.get("date"),
@@ -31,6 +34,8 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
       state: data.get("state"),
       ticket_url: data.get("ticket_url") || null,
       description: data.get("description") || null,
+      venue_lat: latStr ? parseFloat(latStr) : null,
+      venue_lng: lngStr ? parseFloat(lngStr) : null,
       is_published: data.get("is_published") === "on",
     };
 
@@ -98,6 +103,28 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
           defaultValue={show?.description || ""}
           placeholder="Optional details"
         />
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className="mb-1 block text-sm font-medium">Latitude</label>
+          <Input
+            name="venue_lat"
+            type="number"
+            step="any"
+            defaultValue={show?.venue_lat ?? ""}
+            placeholder="e.g. 30.2672"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium">Longitude</label>
+          <Input
+            name="venue_lng"
+            type="number"
+            step="any"
+            defaultValue={show?.venue_lng ?? ""}
+            placeholder="e.g. -97.7431"
+          />
+        </div>
       </div>
       <label className="flex items-center gap-2 text-sm">
         <input

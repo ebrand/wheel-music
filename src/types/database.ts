@@ -6,6 +6,8 @@ export interface Show {
   state: string;
   ticket_url: string | null;
   description: string | null;
+  venue_lat: number | null;
+  venue_lng: number | null;
   is_published: boolean;
   created_at: string;
   updated_at: string;

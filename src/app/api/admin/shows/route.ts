@@ -42,6 +42,8 @@ export async function POST(req: NextRequest) {
       state: body.state,
       ticket_url: body.ticket_url || null,
       description: body.description || null,
+      venue_lat: body.venue_lat ?? null,
+      venue_lng: body.venue_lng ?? null,
       is_published: body.is_published ?? true,
     })
     .select()
@@ -72,6 +74,8 @@ export async function PUT(req: NextRequest) {
       state: body.state,
       ticket_url: body.ticket_url ?? null,
       description: body.description ?? null,
+      venue_lat: body.venue_lat ?? null,
+      venue_lng: body.venue_lng ?? null,
       is_published: body.is_published,
       updated_at: new Date().toISOString(),
     })
