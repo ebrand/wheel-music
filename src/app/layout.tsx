@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Wheel | Austin Pop Band",
+  title: "Wheel | Tenacious Power Pop",
   description:
     "Tenacious power pop from Austin, Texas.",
 };

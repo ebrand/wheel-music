@@ -71,13 +71,13 @@ export function MemberEditor({
             />
           </div>
           <div className="mt-3">
-            <label className="mb-1 block text-sm font-medium">Image URL</label>
+            <label className="mb-1 block text-sm font-medium">Image</label>
             <Input
               value={member.image_url || ""}
               onChange={(e) =>
                 updateMember(idx, { image_url: e.target.value })
               }
-              placeholder="https://..."
+              placeholder="/images/members/photo.jpg"
             />
           </div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
