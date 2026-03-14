@@ -7,7 +7,7 @@ export function UpcomingShows({ shows }: { shows: Show[] }) {
   if (shows.length === 0) return null;
 
   return (
-    <section className="border-t border-border py-16">
+    <section className="py-16">
       <Container>
         <div className="mb-8 flex items-center justify-between">
           <h2 className="text-2xl font-bold">Upcoming Shows</h2>

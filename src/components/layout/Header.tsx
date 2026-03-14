@@ -8,12 +8,11 @@ const navLinks = [
   { href: "/music", label: "Music" },
   { href: "/shows", label: "Shows" },
   { href: "/contact", label: "Contact" },
-  { href: "/merch", label: "Merch" },
 ];
 
 export function Header() {
   return (
-    <header className="border-b border-border">
+    <header>
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="text-xl font-bold tracking-tight">
           WHEEL
