@@ -14,11 +14,23 @@ export const metadata: Metadata = {
     "Tenacious power pop from Austin, Texas.",
 };
 
+const backgrounds = [
+  "/images/psyback.jpeg",
+  "/images/backgrounds/back1.jpg",
+  "/images/backgrounds/back2.jpeg",
+  "/images/backgrounds/back3.jpg",
+  "/images/backgrounds/back4.jpg",
+  "/images/backgrounds/back5.jpg",
+  "/images/backgrounds/back6.jpg",
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
@@ -26,7 +38,7 @@ export default function RootLayout({
           className="pointer-events-none fixed inset-0 z-0"
           style={{
             opacity: 0.05,
-            backgroundImage: "url('/images/psyback.jpeg')",
+            backgroundImage: `url('${bg}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
