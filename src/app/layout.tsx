@@ -25,7 +25,7 @@ export default function RootLayout({
         <div
           className="pointer-events-none fixed inset-0 z-0"
           style={{
-            opacity: 0.02,
+            opacity: 0.05,
             backgroundImage: "url('/images/psyback.jpeg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
