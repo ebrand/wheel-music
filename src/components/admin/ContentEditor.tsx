@@ -49,6 +49,25 @@ export function ContentEditor({ info, onChange }: ContentEditorProps) {
           </div>
         );
       })}
+
+      <div className="border-t border-white/10 pt-4">
+        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-400">
+          Site Settings
+        </h3>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={
+              (info.find((i) => i.key === "show_background")?.value ??
+                "true") !== "false"
+            }
+            onChange={(e) =>
+              updateValue("show_background", e.target.checked ? "true" : "false")
+            }
+          />
+          Show background image
+        </label>
+      </div>
     </div>
   );
 }

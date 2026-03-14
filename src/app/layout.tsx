@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { createPublicServerClient } from "@/lib/supabase/server";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,26 +25,36 @@ const backgrounds = [
   "/images/backgrounds/back6.jpg",
 ];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await createPublicServerClient();
+  const { data } = await supabase
+    .from("band_info")
+    .select("value")
+    .eq("key", "show_background")
+    .single();
+
+  const showBackground = data?.value !== "false";
   const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <div
-          className="pointer-events-none fixed inset-0 z-0"
-          style={{
-            opacity: 0.05,
-            backgroundImage: `url('${bg}')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
+        {showBackground && (
+          <div
+            className="pointer-events-none fixed inset-0 z-0"
+            style={{
+              opacity: 0.05,
+              backgroundImage: `url('${bg}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+        )}
         <div className="relative z-10">
           <Header />
           <main className="min-h-[calc(100vh-8rem)]">{children}</main>
