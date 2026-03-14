@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Show } from "@/types/database";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
+import { VenuePicker } from "@/components/admin/VenuePicker";
 
 interface ShowFormProps {
   show?: Show;
@@ -14,6 +15,16 @@ interface ShowFormProps {
 export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [venueLat, setVenueLat] = useState(show?.venue_lat?.toString() ?? "");
+  const [venueLng, setVenueLng] = useState(show?.venue_lng?.toString() ?? "");
+
+  const handleVenueSelect = useCallback(
+    (coords: { lat: number; lng: number }) => {
+      setVenueLat(coords.lat.toString());
+      setVenueLng(coords.lng.toString());
+    },
+    []
+  );
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -104,6 +115,13 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
           placeholder="Optional details"
         />
       </div>
+      <div>
+        <label className="mb-1 block text-sm font-medium">Venue Lookup</label>
+        <VenuePicker
+          onSelect={handleVenueSelect}
+          initialValue={show ? `${show.venue}, ${show.city}, ${show.state}` : undefined}
+        />
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label className="mb-1 block text-sm font-medium">Latitude</label>
@@ -111,7 +129,8 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
             name="venue_lat"
             type="number"
             step="any"
-            defaultValue={show?.venue_lat ?? ""}
+            value={venueLat}
+            onChange={(e) => setVenueLat(e.target.value)}
             placeholder="e.g. 30.2672"
           />
         </div>
@@ -121,7 +140,8 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
             name="venue_lng"
             type="number"
             step="any"
-            defaultValue={show?.venue_lng ?? ""}
+            value={venueLng}
+            onChange={(e) => setVenueLng(e.target.value)}
             placeholder="e.g. -97.7431"
           />
         </div>

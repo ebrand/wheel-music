@@ -29,13 +29,19 @@ export function ShowCard({ show }: { show: Show }) {
         )}
       </div>
       {hasMap && (
-        <img
-          src={`https://maps.googleapis.com/maps/api/staticmap?center=${show.venue_lat},${show.venue_lng}&zoom=15&size=200x200&markers=${show.venue_lat},${show.venue_lng}&key=${mapKey}`}
-          alt={`Map of ${show.venue}`}
-          width={200}
-          height={200}
-          className="rounded-md"
-        />
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${show.venue}, ${show.city}, ${show.state}`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=${show.venue_lat},${show.venue_lng}&zoom=15&size=200x200&markers=${show.venue_lat},${show.venue_lng}&key=${mapKey}`}
+            alt={`Map of ${show.venue}`}
+            width={200}
+            height={200}
+            className="shrink-0 rounded-md"
+          />
+        </a>
       )}
     </Card>
   );
