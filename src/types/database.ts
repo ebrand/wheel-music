@@ -17,6 +17,7 @@ export interface BandMember {
   role: string;
   bio: string | null;
   image_url: string | null;
+  url: string | null;
   display_order: number;
   created_at: string;
   updated_at: string;

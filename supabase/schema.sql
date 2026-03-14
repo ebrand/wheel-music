@@ -19,6 +19,7 @@ create table if not exists band_members (
   role text not null,
   bio text,
   image_url text,
+  url text,
   display_order integer default 0,
   created_at timestamptz default now(),
   updated_at timestamptz default now()

@@ -32,6 +32,7 @@ export function MemberEditor({
         role: "",
         bio: null,
         image_url: null,
+        url: null,
         display_order: members.length,
         created_at: "",
         updated_at: "",
@@ -78,6 +79,16 @@ export function MemberEditor({
                 updateMember(idx, { image_url: e.target.value })
               }
               placeholder="/images/members/photo.jpg"
+            />
+          </div>
+          <div className="mt-3">
+            <label className="mb-1 block text-sm font-medium">URL</label>
+            <Input
+              value={member.url || ""}
+              onChange={(e) =>
+                updateMember(idx, { url: e.target.value })
+              }
+              placeholder="https://..."
             />
           </div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
