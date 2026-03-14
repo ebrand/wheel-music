@@ -64,6 +64,7 @@ export async function PUT(req: NextRequest) {
             role: member.role,
             bio: member.bio || null,
             image_url: member.image_url || null,
+            url: member.url || null,
             display_order: member.display_order,
             updated_at: new Date().toISOString(),
           })
@@ -74,6 +75,7 @@ export async function PUT(req: NextRequest) {
           role: member.role,
           bio: member.bio || null,
           image_url: member.image_url || null,
+          url: member.url || null,
           display_order: member.display_order ?? 0,
         });
       }
