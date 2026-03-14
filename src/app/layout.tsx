@@ -22,9 +22,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <Header />
-        <main className="min-h-[calc(100vh-8rem)]">{children}</main>
-        <Footer />
+        <div
+          className="pointer-events-none fixed inset-0 z-0"
+          style={{
+            opacity: 0.02,
+            backgroundImage: "url('/images/psyback.jpeg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        <div className="relative z-10">
+          <Header />
+          <main className="min-h-[calc(100vh-8rem)]">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
