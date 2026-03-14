@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Show } from "@/types/database";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatTime } from "@/lib/utils";
 import { AuthGuard } from "@/components/admin/AuthGuard";
 import { ShowForm } from "@/components/admin/ShowForm";
 import { Container } from "@/components/ui/Container";
@@ -89,6 +89,7 @@ export default function AdminShowsPage() {
                   <div>
                     <p className="text-sm font-medium text-accent">
                       {formatDate(show.date)}
+                      {show.show_time && ` at ${formatTime(show.show_time)}`}
                     </p>
                     <p className="font-semibold">{show.venue}</p>
                     <p className="text-sm text-muted">

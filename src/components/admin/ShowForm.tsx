@@ -40,6 +40,7 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
     const payload = {
       id: show?.id,
       date: data.get("date"),
+      show_time: data.get("show_time") || null,
       venue: data.get("venue"),
       city: data.get("city"),
       state: data.get("state"),
@@ -83,9 +84,17 @@ export function ShowForm({ show, onSave, onCancel }: ShowFormProps) {
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium">Venue</label>
-          <Input name="venue" required defaultValue={show?.venue} placeholder="Venue name" />
+          <label className="mb-1 block text-sm font-medium">Time</label>
+          <Input
+            name="show_time"
+            type="time"
+            defaultValue={show?.show_time || ""}
+          />
         </div>
+      </div>
+      <div>
+        <label className="mb-1 block text-sm font-medium">Venue</label>
+        <Input name="venue" required defaultValue={show?.venue} placeholder="Venue name" />
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>

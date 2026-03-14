@@ -1,6 +1,7 @@
 export interface Show {
   id: string;
   date: string;
+  show_time: string | null;
   venue: string;
   city: string;
   state: string;

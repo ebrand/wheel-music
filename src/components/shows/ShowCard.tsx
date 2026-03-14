@@ -1,5 +1,5 @@
 import { Show } from "@/types/database";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatTime } from "@/lib/utils";
 import { Card } from "@/components/ui/Card";
 
 export function ShowCard({ show }: { show: Show }) {
@@ -9,7 +9,10 @@ export function ShowCard({ show }: { show: Show }) {
   return (
     <Card className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
       <div className="flex-1">
-        <p className="text-sm font-medium text-accent">{formatDate(show.date)}</p>
+        <p className="text-sm font-medium text-accent">
+          {formatDate(show.date)}
+          {show.show_time && ` at ${formatTime(show.show_time)}`}
+        </p>
         <p className="text-lg font-semibold">{show.venue}</p>
         <p className="text-sm text-muted">
           {show.city}, {show.state}

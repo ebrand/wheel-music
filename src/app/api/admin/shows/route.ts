@@ -37,6 +37,7 @@ export async function POST(req: NextRequest) {
     .from("shows")
     .insert({
       date: body.date,
+      show_time: body.show_time || null,
       venue: body.venue,
       city: body.city,
       state: body.state,
@@ -69,6 +70,7 @@ export async function PUT(req: NextRequest) {
     .from("shows")
     .update({
       date: body.date,
+      show_time: body.show_time || null,
       venue: body.venue,
       city: body.city,
       state: body.state,

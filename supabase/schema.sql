@@ -2,6 +2,7 @@
 create table if not exists shows (
   id uuid default gen_random_uuid() primary key,
   date date not null,
+  show_time text,
   venue text not null,
   city text not null,
   state text not null,
