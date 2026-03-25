@@ -1,41 +1,56 @@
+import { createPublicServerClient } from "@/lib/supabase/server";
+import type { Album, Track, AlbumWithTracks } from "@/types/database";
 import { Container } from "@/components/ui/Container";
+import MusicPageContent from "@/components/music/MusicPageContent";
 
 export const metadata = { title: "Music | Wheel" };
 
-const embeds = [
-  {
-    title: "Apple Music",
-    src: "https://embed.music.apple.com/us/artist/wheel/1518252109",
-    type: "apple" as const,
-  },
-];
+export default async function MusicPage() {
+  const supabase = await createPublicServerClient();
 
-export default function MusicPage() {
+  const { data } = await supabase
+    .from("album")
+    .select("*, tracks:track(id, album_id, title, track_number, audio_url, duration_seconds, is_published, created_at, updated_at)")
+    .eq("is_published", true)
+    .order("sort_order", { ascending: true })
+    .order("year", { ascending: false });
+
+  const albums: AlbumWithTracks[] = ((data ?? []) as (Album & { tracks: Track[] })[]).map(
+    (album) => ({
+      ...album,
+      tracks: album.tracks
+        .filter((t) => t.is_published)
+        .sort((a, b) => a.track_number - b.track_number),
+    })
+  );
+
   return (
     <section className="py-16">
       <Container>
         <h1 className="text-4xl font-bold">Music</h1>
-        <p className="mt-4 text-muted">
-          Listen to Wheel on your favorite platform.
-        </p>
+        <p className="mt-4 text-muted">Browse and listen to Wheel&apos;s discography.</p>
 
-        <div className="mt-10 flex flex-col gap-8">
-          {embeds.map((embed) => (
-            <div key={embed.title}>
-              <h2 className="mb-3 text-xl font-semibold">{embed.title}</h2>
-              <div className="overflow-hidden rounded-lg border border-border">
-                <iframe
-                  src={embed.src}
-                  width="100%"
-                  height="450"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  className="border-0"
-                  title={embed.title}
-                />
-              </div>
-            </div>
-          ))}
+        <div className="mt-10">
+          {albums.length === 0 ? (
+            <p className="text-muted">No music yet. Check back soon.</p>
+          ) : (
+            <MusicPageContent albums={albums} />
+          )}
+        </div>
+
+        <div className="mt-12">
+          <a
+            href="https://music.apple.com/us/artist/wheel/1518252109"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img
+              src="/wheel-on-apple.png"
+              alt="Listen on Apple Music"
+              className="h-auto w-full max-w-sm rounded-lg"
+            />
+          </a>
         </div>
       </Container>
     </section>

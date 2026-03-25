@@ -46,6 +46,15 @@ export default function AdminDashboard() {
                 </p>
               </Card>
             </Link>
+
+            <Link href="/admin/music">
+              <Card className="transition-colors hover:border-accent">
+                <h2 className="text-xl font-semibold">Manage Music</h2>
+                <p className="mt-2 text-sm text-muted">
+                  Add albums and upload tracks
+                </p>
+              </Card>
+            </Link>
           </div>
         </Container>
       </section>
